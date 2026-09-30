@@ -1,0 +1,36 @@
+export declare class A1000495177Result {
+    op10Barcode: string;
+    op10OnlineTime: string;
+    op10OfflineTime: string;
+    op10Qualified: string;
+    op10TestPassed: string;
+    op10InflectionPressure1: string;
+    op10FinalDisplacement1: string;
+    op10FinalPressure1: string;
+    op10InflectionPressure2: string;
+    op10FinalDisplacement2: string;
+    op10FinalPressure2: string;
+    op20OnlineTime: string;
+    op20OfflineTime: string;
+    op20Qualified: string;
+    op20Barcode: string;
+    op20TestPassed: string;
+    op20InflectionPressure: string;
+    op20FinalDisplacement: string;
+    op20FinalPressure: string;
+    op30OnlineTime: string;
+    op30OfflineTime: string;
+    op30Qualified: string;
+    op30Barcode: string;
+    op30TestPassed: string;
+    op30InflectionPressure: string;
+    op30FinalDisplacement: string;
+    op30FinalPressure: string;
+    op40OnlineTime: string;
+    op40OfflineTime: string;
+    op40Qualified: string;
+    op40Barcode: string;
+    op40TestPassed: string;
+    op40Torque: string;
+    op40Angle: string;
+}
