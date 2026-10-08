@@ -27,8 +27,9 @@ export declare class MssqlResultController {
     findOne282639(barcode: string): Promise<A1005282639Result | null>;
     save282639(dto: Partial<A1005282639Result>): Promise<Partial<A1005282639Result> & A1005282639Result>;
     delete282639(barcode: string): Promise<import("typeorm").DeleteResult>;
-    getCurrentProduct(): Promise<{
-        total: number;
-        list: import("./entities/current-product").CurrentProduct[];
+    getCurrentProductType(): Promise<import("./entities/current-product").CurrentProduct>;
+    getCurrentProductList(): Promise<{
+        processedMachineList: import("./mssql-result.service").processedMachineItem[];
+        standardList: import("./mssql-result.service").standardItem[];
     }>;
 }

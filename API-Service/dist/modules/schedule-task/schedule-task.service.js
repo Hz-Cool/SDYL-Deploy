@@ -23,6 +23,8 @@ const schedule_task_log_entity_1 = require("./entities/schedule-task-log.entity"
 const login_event_service_1 = require("../request-event/login/login-event.service");
 const table1_event_service_1 = require("../request-event/table1/table1-event.service");
 const order_event_service_1 = require("../request-event/order/order-event.service");
+const refresh_model_event_service_1 = require("../request-event/refresh-model/refresh-model-event.service");
+const work_report_event_service_1 = require("../request-event/work-report/work-report-event.service");
 const { CronJob } = require('cron');
 let ScheduleTaskService = ScheduleTaskService_1 = class ScheduleTaskService {
     taskRepo;
@@ -31,18 +33,24 @@ let ScheduleTaskService = ScheduleTaskService_1 = class ScheduleTaskService {
     loginEventService;
     table1EventService;
     orderEventService;
+    refreshModelEventService;
+    workReportEventService;
     logger = new common_1.Logger(ScheduleTaskService_1.name);
     handlers = new Map();
-    constructor(taskRepo, logRepo, schedulerRegistry, loginEventService, table1EventService, orderEventService) {
+    constructor(taskRepo, logRepo, schedulerRegistry, loginEventService, table1EventService, orderEventService, refreshModelEventService, workReportEventService) {
         this.taskRepo = taskRepo;
         this.logRepo = logRepo;
         this.schedulerRegistry = schedulerRegistry;
         this.loginEventService = loginEventService;
         this.table1EventService = table1EventService;
         this.orderEventService = orderEventService;
+        this.refreshModelEventService = refreshModelEventService;
+        this.workReportEventService = workReportEventService;
         this.registerHandler(this.loginEventService);
         this.registerHandler(this.table1EventService);
         this.registerHandler(this.orderEventService);
+        this.registerHandler(this.refreshModelEventService);
+        this.registerHandler(this.workReportEventService);
     }
     registerHandler(handler) {
         if (handler && handler.taskCode) {
@@ -267,6 +275,8 @@ exports.ScheduleTaskService = ScheduleTaskService = ScheduleTaskService_1 = __de
         schedule_1.SchedulerRegistry,
         login_event_service_1.LoginEventService,
         table1_event_service_1.Table1EventService,
-        order_event_service_1.OrderEventService])
+        order_event_service_1.OrderEventService,
+        refresh_model_event_service_1.RefreshModelEventService,
+        work_report_event_service_1.WorkReportEventService])
 ], ScheduleTaskService);
 //# sourceMappingURL=schedule-task.service.js.map

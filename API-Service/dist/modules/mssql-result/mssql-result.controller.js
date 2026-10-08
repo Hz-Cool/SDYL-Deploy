@@ -58,8 +58,11 @@ let MssqlResultController = class MssqlResultController {
     delete282639(barcode) {
         return this.service.delete282639(barcode);
     }
-    getCurrentProduct() {
-        return this.service.getCurrentProduct();
+    getCurrentProductType() {
+        return this.service.getCurrentProductType();
+    }
+    getCurrentProductList() {
+        return this.service.getCurrentProductList();
     }
 };
 exports.MssqlResultController = MssqlResultController;
@@ -148,12 +151,18 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], MssqlResultController.prototype, "delete282639", null);
 __decorate([
-    (0, public_1.Public)(),
-    (0, common_1.Get)('current-product'),
+    (0, common_1.Get)('current-product-type'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], MssqlResultController.prototype, "getCurrentProduct", null);
+], MssqlResultController.prototype, "getCurrentProductType", null);
+__decorate([
+    (0, public_1.Public)(),
+    (0, common_1.Get)('zip-data'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], MssqlResultController.prototype, "getCurrentProductList", null);
 exports.MssqlResultController = MssqlResultController = __decorate([
     (0, common_1.Controller)('mssql-result'),
     __metadata("design:paramtypes", [mssql_result_service_1.MssqlResultService])

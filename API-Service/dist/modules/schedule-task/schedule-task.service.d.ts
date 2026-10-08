@@ -9,6 +9,8 @@ import { ScheduleTaskLogSearchDto } from './dto/schedule-task-log-search.dto';
 import { LoginEventService } from '../request-event/login/login-event.service';
 import { Table1EventService } from '../request-event/table1/table1-event.service';
 import { OrderEventService } from '../request-event/order/order-event.service';
+import { RefreshModelEventService } from '../request-event/refresh-model/refresh-model-event.service';
+import { WorkReportEventService } from '../request-event/work-report/work-report-event.service';
 export declare class ScheduleTaskService implements OnModuleInit {
     private readonly taskRepo;
     private readonly logRepo;
@@ -16,9 +18,11 @@ export declare class ScheduleTaskService implements OnModuleInit {
     private readonly loginEventService;
     private readonly table1EventService;
     private readonly orderEventService;
+    private readonly refreshModelEventService;
+    private readonly workReportEventService;
     private readonly logger;
     private readonly handlers;
-    constructor(taskRepo: Repository<ScheduleTask>, logRepo: Repository<ScheduleTaskLog>, schedulerRegistry: SchedulerRegistry, loginEventService: LoginEventService, table1EventService: Table1EventService, orderEventService: OrderEventService);
+    constructor(taskRepo: Repository<ScheduleTask>, logRepo: Repository<ScheduleTaskLog>, schedulerRegistry: SchedulerRegistry, loginEventService: LoginEventService, table1EventService: Table1EventService, orderEventService: OrderEventService, refreshModelEventService: RefreshModelEventService, workReportEventService: WorkReportEventService);
     registerHandler(handler: ITaskHandler): void;
     onModuleInit(): Promise<void>;
     reloadAllTasks(): Promise<void>;

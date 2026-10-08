@@ -17,6 +17,8 @@ export declare class SysConfigService {
     findOne(id: number): Promise<SysConfig>;
     findOneByKey(configKey: string): Promise<SysConfig>;
     findByKeyAuthorization(): Promise<string>;
+    findByKeyDeviceGroup(): Promise<string>;
+    findByKeyOrderNo(): Promise<string>;
     create(createDto: Partial<SysConfig>): Promise<SysConfig>;
     update(id: number, updateDto: Partial<SysConfig>): Promise<SysConfig>;
     remove(id: number): Promise<{

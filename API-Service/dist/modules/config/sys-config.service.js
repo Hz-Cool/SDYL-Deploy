@@ -99,6 +99,20 @@ let SysConfigService = SysConfigService_1 = class SysConfigService {
             ? config.configValue
             : '';
     }
+    async findByKeyDeviceGroup() {
+        const configKey = 'sys.deviceGroup';
+        const config = await this.findOneByKey(configKey);
+        return config.valueType === sys_config_enum_1.SysConfigValueType.STRING
+            ? config.configValue
+            : '';
+    }
+    async findByKeyOrderNo() {
+        const configKey = 'sys.orderNo';
+        const config = await this.findOneByKey(configKey);
+        return config.valueType === sys_config_enum_1.SysConfigValueType.STRING
+            ? config.configValue
+            : '';
+    }
     async create(createDto) {
         if (!createDto.configKey) {
             throw new common_1.BadRequestException('configKey 为必填项');

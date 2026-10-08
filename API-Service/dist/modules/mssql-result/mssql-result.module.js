@@ -15,6 +15,7 @@ const a1005282639_result_entity_1 = require("./entities/a1005282639-result.entit
 const mssql_result_service_1 = require("./mssql-result.service");
 const mssql_result_controller_1 = require("./mssql-result.controller");
 const current_product_1 = require("./entities/current-product");
+const sys_config_module_1 = require("../config/sys-config.module");
 let MssqlResultModule = class MssqlResultModule {
 };
 exports.MssqlResultModule = MssqlResultModule;
@@ -22,6 +23,7 @@ exports.MssqlResultModule = MssqlResultModule = __decorate([
     (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forFeature([a1000495177_result_entity_1.A1000495177Result, a1003944189_result_entity_1.A1003944189Result, a1005282639_result_entity_1.A1005282639Result, current_product_1.CurrentProduct], 'mssqlConnection'),
+            sys_config_module_1.SysConfigModule,
         ],
         controllers: [mssql_result_controller_1.MssqlResultController],
         providers: [mssql_result_service_1.MssqlResultService],

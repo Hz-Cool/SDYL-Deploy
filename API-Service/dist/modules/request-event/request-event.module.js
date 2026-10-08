@@ -18,6 +18,11 @@ const order_event_controller_1 = require("./order/order-event.controller");
 const order_event_service_1 = require("./order/order-event.service");
 const accounts_module_1 = require("../accounts/accounts.module");
 const sys_config_module_1 = require("../config/sys-config.module");
+const mssql_result_module_1 = require("../mssql-result/mssql-result.module");
+const refresh_model_event_controller_1 = require("./refresh-model/refresh-model-event.controller");
+const refresh_model_event_service_1 = require("./refresh-model/refresh-model-event.service");
+const work_report_event_controller_1 = require("./work-report/work-report-event.controller");
+const work_report_event_service_1 = require("./work-report/work-report-event.service");
 let RequestEventModule = class RequestEventModule {
 };
 exports.RequestEventModule = RequestEventModule;
@@ -28,14 +33,29 @@ exports.RequestEventModule = RequestEventModule = __decorate([
             http_request_client_module_1.HttpRequestClientModule,
             accounts_module_1.AccountsModule,
             sys_config_module_1.SysConfigModule,
+            mssql_result_module_1.MssqlResultModule,
         ],
         controllers: [
             login_event_controller_1.LoginEventController,
             table1_event_controller_1.Table1EventController,
             order_event_controller_1.OrderEventController,
+            refresh_model_event_controller_1.RefreshModelEventController,
+            work_report_event_controller_1.WorkReportEventController,
         ],
-        providers: [login_event_service_1.LoginEventService, table1_event_service_1.Table1EventService, order_event_service_1.OrderEventService],
-        exports: [login_event_service_1.LoginEventService, table1_event_service_1.Table1EventService, order_event_service_1.OrderEventService],
+        providers: [
+            login_event_service_1.LoginEventService,
+            table1_event_service_1.Table1EventService,
+            order_event_service_1.OrderEventService,
+            refresh_model_event_service_1.RefreshModelEventService,
+            work_report_event_service_1.WorkReportEventService,
+        ],
+        exports: [
+            login_event_service_1.LoginEventService,
+            table1_event_service_1.Table1EventService,
+            order_event_service_1.OrderEventService,
+            refresh_model_event_service_1.RefreshModelEventService,
+            work_report_event_service_1.WorkReportEventService,
+        ],
     })
 ], RequestEventModule);
 //# sourceMappingURL=request-event.module.js.map
