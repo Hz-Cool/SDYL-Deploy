@@ -25,6 +25,7 @@ const table1_event_service_1 = require("../request-event/table1/table1-event.ser
 const order_event_service_1 = require("../request-event/order/order-event.service");
 const refresh_model_event_service_1 = require("../request-event/refresh-model/refresh-model-event.service");
 const work_report_event_service_1 = require("../request-event/work-report/work-report-event.service");
+const refresh_submission_status_event_service_1 = require("../request-event/refresh-submission-status/refresh-submission-status-event.service");
 const { CronJob } = require('cron');
 let ScheduleTaskService = ScheduleTaskService_1 = class ScheduleTaskService {
     taskRepo;
@@ -35,9 +36,10 @@ let ScheduleTaskService = ScheduleTaskService_1 = class ScheduleTaskService {
     orderEventService;
     refreshModelEventService;
     workReportEventService;
+    refreshSubmissionStatusEventService;
     logger = new common_1.Logger(ScheduleTaskService_1.name);
     handlers = new Map();
-    constructor(taskRepo, logRepo, schedulerRegistry, loginEventService, table1EventService, orderEventService, refreshModelEventService, workReportEventService) {
+    constructor(taskRepo, logRepo, schedulerRegistry, loginEventService, table1EventService, orderEventService, refreshModelEventService, workReportEventService, refreshSubmissionStatusEventService) {
         this.taskRepo = taskRepo;
         this.logRepo = logRepo;
         this.schedulerRegistry = schedulerRegistry;
@@ -46,11 +48,13 @@ let ScheduleTaskService = ScheduleTaskService_1 = class ScheduleTaskService {
         this.orderEventService = orderEventService;
         this.refreshModelEventService = refreshModelEventService;
         this.workReportEventService = workReportEventService;
+        this.refreshSubmissionStatusEventService = refreshSubmissionStatusEventService;
         this.registerHandler(this.loginEventService);
         this.registerHandler(this.table1EventService);
         this.registerHandler(this.orderEventService);
         this.registerHandler(this.refreshModelEventService);
         this.registerHandler(this.workReportEventService);
+        this.registerHandler(this.refreshSubmissionStatusEventService);
     }
     registerHandler(handler) {
         if (handler && handler.taskCode) {
@@ -277,6 +281,7 @@ exports.ScheduleTaskService = ScheduleTaskService = ScheduleTaskService_1 = __de
         table1_event_service_1.Table1EventService,
         order_event_service_1.OrderEventService,
         refresh_model_event_service_1.RefreshModelEventService,
-        work_report_event_service_1.WorkReportEventService])
+        work_report_event_service_1.WorkReportEventService,
+        refresh_submission_status_event_service_1.RefreshSubmissionStatusEventService])
 ], ScheduleTaskService);
 //# sourceMappingURL=schedule-task.service.js.map

@@ -31,5 +31,19 @@ export declare class MssqlResultController {
     getCurrentProductList(): Promise<{
         processedMachineList: import("./mssql-result.service").processedMachineItem[];
         standardList: import("./mssql-result.service").standardItem[];
+        hasMore: boolean;
+        cursorKey: string;
+        nextCursor: {
+            time: string | null;
+            barcode: string;
+        } | null;
+        barcode: string;
+    } | {
+        processedMachineList: import("./mssql-result.service").processedMachineItem[];
+        standardList: import("./mssql-result.service").standardItem[];
+        hasMore?: undefined;
+        cursorKey?: undefined;
+        nextCursor?: undefined;
+        barcode?: undefined;
     }>;
 }

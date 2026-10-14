@@ -9,4 +9,5 @@ export declare class RefreshModelEventService implements ITaskHandler {
     readonly aliases: string[];
     constructor(mssqlResultService: MssqlResultService, sysConfigService: SysConfigService);
     execute(taskConfig?: any): Promise<any>;
+    private setNeedFirstPart;
 }

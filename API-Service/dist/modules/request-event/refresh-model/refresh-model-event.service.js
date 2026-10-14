@@ -80,12 +80,48 @@ let RefreshModelEventService = RefreshModelEventService_1 = class RefreshModelEv
             });
             this.logger.log(`产品型号配置已更新: ${oldValue} -> ${productModel}`);
         }
+        await this.setNeedFirstPart(productModel);
         return {
             success: true,
             changed: true,
             productModel,
             oldValue,
         };
+    }
+    async setNeedFirstPart(productModel) {
+        const key = 'inspect.needFirstPart';
+        const model = String(productModel || '').slice(-6);
+        const defaults = { '282639': false, '495177': false, '944189': false };
+        let cfg = null;
+        try {
+            cfg = await this.sysConfigService.findOneByKey(key);
+        }
+        catch {
+            cfg = null;
+        }
+        let flagObj = { ...defaults, [model]: true };
+        if (cfg?.configValue) {
+            try {
+                flagObj = { ...defaults, ...JSON.parse(cfg.configValue), [model]: true };
+            }
+            catch { }
+        }
+        if (!cfg) {
+            await this.sysConfigService.create({
+                configKey: key,
+                configName: '首件待送检型号',
+                configGroup: 'inspect',
+                configValue: JSON.stringify(flagObj),
+                valueType: sys_config_enum_1.SysConfigValueType.JSON,
+                status: 1,
+                isSystem: 1,
+                remark: '型号切换后由 refresh_model_job 写入，work_report_job 首条上报后置 false',
+            });
+        }
+        else {
+            await this.sysConfigService.update(cfg.id, { configValue: JSON.stringify(flagObj) });
+        }
+        this.logger.log(`[inspect] 首件待送检型号已标记: ${model}`);
     }
 };
 exports.RefreshModelEventService = RefreshModelEventService;

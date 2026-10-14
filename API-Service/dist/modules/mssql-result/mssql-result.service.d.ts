@@ -5,6 +5,7 @@ import { A1005282639Result } from './entities/a1005282639-result.entity';
 import { CurrentProduct } from './entities/current-product';
 import { MssqlResultSearchDto } from './dto/mssql-result-search.dto';
 import { SysConfigService } from '../config/sys-config.service';
+import { StoreService } from '../store/store.service';
 export type TimeBarcodeCursor = {
     time?: string;
     barcode?: string;
@@ -29,7 +30,8 @@ export declare class MssqlResultService {
     private readonly repo282639;
     private readonly currentProductRepository;
     private readonly sysConfigService;
-    constructor(repo495177: Repository<A1000495177Result>, repo944189: Repository<A1003944189Result>, repo282639: Repository<A1005282639Result>, currentProductRepository: Repository<CurrentProduct>, sysConfigService: SysConfigService);
+    private readonly storeService;
+    constructor(repo495177: Repository<A1000495177Result>, repo944189: Repository<A1003944189Result>, repo282639: Repository<A1005282639Result>, currentProductRepository: Repository<CurrentProduct>, sysConfigService: SysConfigService, storeService: StoreService);
     search495177({ pageNum, pageSize, barcode, }: MssqlResultSearchDto): Promise<{
         total: number;
         list: A1000495177Result[];
@@ -52,9 +54,23 @@ export declare class MssqlResultService {
     save282639(dto: Partial<A1005282639Result>): Promise<Partial<A1005282639Result> & A1005282639Result>;
     delete282639(barcode: string): Promise<import("typeorm").DeleteResult>;
     getCurrentProductType(): Promise<CurrentProduct>;
-    getCurrentProductList(): Promise<{
+    getCurrentProductList(overrideModel?: string): Promise<{
         processedMachineList: processedMachineItem[];
         standardList: standardItem[];
+        hasMore: boolean;
+        cursorKey: string;
+        nextCursor: {
+            time: string | null;
+            barcode: string;
+        } | null;
+        barcode: string;
+    } | {
+        processedMachineList: processedMachineItem[];
+        standardList: standardItem[];
+        hasMore?: undefined;
+        cursorKey?: undefined;
+        nextCursor?: undefined;
+        barcode?: undefined;
     }>;
     loadNext495177(cursor?: string | TimeBarcodeCursor, limit?: number): Promise<{
         list: A1000495177Result[];
@@ -83,4 +99,9 @@ export declare class MssqlResultService {
     private clampLimit;
     private applyKeysetWhere;
     private wrapCursorResult;
+    private parseCursor;
+    commitCursor(cursorKey: string, nextCursor: {
+        time: any;
+        barcode: string;
+    } | null, resetCount?: boolean): Promise<void>;
 }

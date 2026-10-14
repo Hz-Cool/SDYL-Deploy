@@ -23,6 +23,9 @@ const refresh_model_event_controller_1 = require("./refresh-model/refresh-model-
 const refresh_model_event_service_1 = require("./refresh-model/refresh-model-event.service");
 const work_report_event_controller_1 = require("./work-report/work-report-event.controller");
 const work_report_event_service_1 = require("./work-report/work-report-event.service");
+const refresh_submission_status_event_controller_1 = require("./refresh-submission-status/refresh-submission-status-event.controller");
+const refresh_submission_status_event_service_1 = require("./refresh-submission-status/refresh-submission-status-event.service");
+const inspect_submit_module_1 = require("../inspect-submit/inspect-submit.module");
 let RequestEventModule = class RequestEventModule {
 };
 exports.RequestEventModule = RequestEventModule;
@@ -34,6 +37,7 @@ exports.RequestEventModule = RequestEventModule = __decorate([
             accounts_module_1.AccountsModule,
             sys_config_module_1.SysConfigModule,
             mssql_result_module_1.MssqlResultModule,
+            inspect_submit_module_1.InspectSubmitModule,
         ],
         controllers: [
             login_event_controller_1.LoginEventController,
@@ -41,6 +45,7 @@ exports.RequestEventModule = RequestEventModule = __decorate([
             order_event_controller_1.OrderEventController,
             refresh_model_event_controller_1.RefreshModelEventController,
             work_report_event_controller_1.WorkReportEventController,
+            refresh_submission_status_event_controller_1.RefreshSubmissionStatusEventController,
         ],
         providers: [
             login_event_service_1.LoginEventService,
@@ -48,6 +53,7 @@ exports.RequestEventModule = RequestEventModule = __decorate([
             order_event_service_1.OrderEventService,
             refresh_model_event_service_1.RefreshModelEventService,
             work_report_event_service_1.WorkReportEventService,
+            refresh_submission_status_event_service_1.RefreshSubmissionStatusEventService,
         ],
         exports: [
             login_event_service_1.LoginEventService,
@@ -55,6 +61,7 @@ exports.RequestEventModule = RequestEventModule = __decorate([
             order_event_service_1.OrderEventService,
             refresh_model_event_service_1.RefreshModelEventService,
             work_report_event_service_1.WorkReportEventService,
+            refresh_submission_status_event_service_1.RefreshSubmissionStatusEventService,
         ],
     })
 ], RequestEventModule);
